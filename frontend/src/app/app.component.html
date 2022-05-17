@@ -1,0 +1,27 @@
+<!--
+<a href="https://github.com/NG-ZORRO/ng-zorro-antd" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
+  <img height="300" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
+</a>-->
+
+
+<nz-layout>
+  <nz-header>
+    <div class="logo" routerLink="/home" [routerLinkActive]="['nzSelected']">
+      TODO APP
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+      <li nz-menu-item [routerLink]="['/my-todos']" [routerLinkActive]="['ant-menu-item-selected']">Meine ToDos</li>
+      <li nz-menu-item [routerLink]="['/create-todo']" [routerLinkActive]="['ant-menu-item-selected']">ToDo erstellen</li>
+    </ul>
+  </nz-header>
+  <nz-layout>
+    <nz-layout class="inner-layout">
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+      <nz-footer>
+        Henning Weise ©2022 Distributed Systems Lab
+      </nz-footer>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

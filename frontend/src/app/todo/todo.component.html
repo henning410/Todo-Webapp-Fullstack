@@ -1,0 +1,16 @@
+<nz-badge [nzCount]="todo!.priority">
+  <nz-card style="width:300px;" [nzActions]="[actionSetting, actionEdit, actionDelete]">
+    <nz-card-meta
+      [nzTitle]="todo!.todo"
+    ></nz-card-meta>
+  </nz-card>
+  <ng-template #actionSetting>
+    <i nz-icon nzType="setting"></i>
+  </ng-template>
+  <ng-template #actionEdit>
+    <i nz-icon nzType="edit"></i>
+  </ng-template>
+  <ng-template #actionDelete>
+    <i nz-icon nzType="delete" nzTheme="outline"></i>
+  </ng-template>
+</nz-badge>

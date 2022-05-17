@@ -1,0 +1,41 @@
+.layout {
+  min-height: 100vh;
+}
+
+.logo {
+  color: white;
+  width: 120px;
+  height: 31px;
+  float: left;
+  font-weight: bolder;
+  background-image: url("../assets/images/checklist_118086.png");
+  display: block;
+}
+
+nz-header {
+  position: fixed;
+  width: 100%;
+}
+
+[nz-menu] {
+  line-height: 64px;
+}
+
+nz-content {
+  padding: 0 50px;
+  margin-top: 100px;
+}
+
+nz-breadcrumb {
+  margin: 16px 0;
+}
+
+.inner-content {
+  background: #fff;
+  padding: 24px;
+  min-height: 380px;
+}
+
+nz-footer {
+  text-align: center;
+}
