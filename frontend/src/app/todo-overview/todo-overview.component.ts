@@ -9,22 +9,23 @@ import {DataService} from "../service/data.service";
 })
 export class TodoOverviewComponent implements OnInit {
   todos: Todo[] = [];
+  headers: any;
+  error = "";
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.loadTodo();
+    this.loadTodos();
   }
 
-  loadTodo() {
+  loadTodos() {
     this.dataService.getTodo()
-      .subscribe((data: Todo[]) => this.todos = data);
-
-    /*this.dataService.getTodo()
-      .subscribe((data: Todo) => this.todo = {
-        todo: data.todo,
-        priority:  data.priority,
-      });*/
+      .subscribe((data: Todo[]) => {
+        this.todos = data;
+      },
+        error => {
+        this.error = error;
+        });
   }
 
 }

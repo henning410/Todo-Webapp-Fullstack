@@ -1,4 +1,21 @@
-<ng-container *ngFor="let todo of todos">
-  <app-todo [todo]="todo"></app-todo>
+<ng-container *ngIf="todos.length == 0 && error == ''; else loadTodosBlock">
+  <div style="display: flex; justify-content: center; font-size: 40px; margin-bottom: 15%">
+    <i nz-icon nzType="loading" nzTheme="outline"></i>
+  </div>
 </ng-container>
+
+<ng-template #loadTodosBlock>
+  <ng-container *ngFor="let todo of todos">
+    <app-todo [todo]="todo"></app-todo>
+  </ng-container>
+</ng-template>
+
+<div *ngIf="error != ''" style="display: flex; justify-content: center">
+  <nz-alert nzBanner nzType="error" style="width: 50%"
+            nzMessage="Error"
+            [nzDescription]=error
+            nzShowIcon
+  ></nz-alert>
+</div>
+
 

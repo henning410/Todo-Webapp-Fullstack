@@ -1,16 +1,35 @@
 <nz-badge [nzCount]="todo!.priority">
-  <nz-card style="width:300px;" [nzActions]="[actionSetting, actionEdit, actionDelete]">
+  <nz-alert *ngIf="error !== ''" nzType="error"
+            [nzMessage]="error"
+            nzShowIcon
+  ></nz-alert>
+  <nz-card style="width:300px;" [nzActions]="[actionSetting, actionDelete]">
     <nz-card-meta
       [nzTitle]="todo!.todo"
     ></nz-card-meta>
   </nz-card>
   <ng-template #actionSetting>
-    <i nz-icon nzType="setting"></i>
-  </ng-template>
-  <ng-template #actionEdit>
-    <i nz-icon nzType="edit"></i>
+    <i nz-icon nzType="edit" (click)="showModal()"></i>
   </ng-template>
   <ng-template #actionDelete>
-    <i nz-icon nzType="delete" nzTheme="outline"></i>
+    <i nz-icon nzType="delete" nzTheme="outline" (click)="showConfirm()"></i>
   </ng-template>
 </nz-badge>
+
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Edit Todo" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <div style="display: flex; justify-content: center">
+      <input style="width: 50%" nz-input placeholder="Title" [(ngModel)]="todo!.todo"/>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 2%">
+      <nz-select type="number" [(ngModel)]="todo!.priority" style="width: 50% " (ngModelChange)="toNumber()">
+        <nz-option nzValue=1 nzLabel="1"></nz-option>
+        <nz-option nzValue=2 nzLabel="2"></nz-option>
+        <nz-option nzValue=3 nzLabel="3"></nz-option>
+        <nz-option nzValue=4 nzLabel="4"></nz-option>
+        <nz-option nzValue=5 nzLabel="5"></nz-option>
+      </nz-select>
+    </div>
+  </ng-container>
+</nz-modal>

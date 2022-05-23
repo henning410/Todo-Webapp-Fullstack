@@ -4,11 +4,11 @@
   "priority": 1
 },
   {
-    "todo": "This is some ToDo",
-    "priority": 1
+    "todo": "VS Lab",
+    "priority": 4
   },
   {
-    "todo": "This is some ToDo",
+    "todo": "Learn IT-Security",
     "priority": 1
   },
   {
@@ -22,6 +22,5 @@
   "todo": "This is some ToDo",
   "priority": 1
 }
-
   ]
 

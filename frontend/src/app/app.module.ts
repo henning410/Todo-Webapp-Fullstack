@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { de_DE } from 'ng-zorro-antd/i18n';
+import { en_GB } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
+import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,8 +31,10 @@ import {NzBadgeModule} from "ng-zorro-antd/badge";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzSelectModule} from "ng-zorro-antd/select";
+import {NzModalModule} from "ng-zorro-antd/modal";
+import {NzAlertModule} from "ng-zorro-antd/alert";
 
-registerLocaleData(de);
+registerLocaleData(en);
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
 @NgModule({
@@ -58,9 +62,11 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     NzBadgeModule,
     NzButtonModule,
     NzInputModule,
-    NzSelectModule
+    NzSelectModule,
+    NzModalModule,
+    NzAlertModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: de_DE }],
+  providers: [{ provide: NZ_I18N, useValue: en_GB }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
