@@ -38,10 +38,4 @@ export class TodoCreateComponent implements OnInit {
        this.error = error;
       });
   }
-
-  toNumber() {
-    console.log('old: ', this.todo);
-    this.todo.priority = +this.todo.priority;
-    console.log('new: ', this.todo);
-  }
 }

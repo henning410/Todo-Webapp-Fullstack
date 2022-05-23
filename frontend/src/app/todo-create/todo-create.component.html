@@ -15,12 +15,12 @@
     <div>
       <h3>Please select one priority for your Todo!</h3>
     </div>
-    <nz-select type="number" [(ngModel)]="todo.priority" style="width: 10% " (ngModelChange)="toNumber()">
-      <nz-option nzValue=1 nzLabel="1"></nz-option>
-      <nz-option nzValue=2 nzLabel="2"></nz-option>
-      <nz-option nzValue=3 nzLabel="3"></nz-option>
-      <nz-option nzValue=4 nzLabel="4"></nz-option>
-      <nz-option nzValue=5 nzLabel="5"></nz-option>
+    <nz-select type="number" [(ngModel)]="todo.priority" style="width: 10% ">
+      <nz-option nzValue=1 nzLabel=1></nz-option>
+      <nz-option nzValue=2 nzLabel=2></nz-option>
+      <nz-option nzValue=3 nzLabel=3></nz-option>
+      <nz-option nzValue=4 nzLabel=4></nz-option>
+      <nz-option nzValue=5 nzLabel=5></nz-option>
     </nz-select>
   </ng-container>
   <ng-container *ngIf="current == 2">

@@ -70,5 +70,6 @@ export class TodoComponent implements OnInit {
     console.log('old: ', this.todo);
     this.todo!.priority = +this.todo!.priority;
     console.log('new: ', this.todo);
+    return this.todo!.priority;
   }
 }
