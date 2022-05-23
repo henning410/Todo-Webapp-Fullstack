@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Todo} from "../models/todo";
 import {DataService} from "../service/data.service";
 import {NzModalRef, NzModalService} from "ng-zorro-antd/modal";
@@ -11,6 +11,7 @@ import {NzModalRef, NzModalService} from "ng-zorro-antd/modal";
 export class TodoComponent implements OnInit {
   @Input() todo: Todo | undefined;
   @Input() preview: boolean = false;
+  @Output() deleteTodoEvent = new EventEmitter<string>();
   isVisible = false;
   confirmModal?: NzModalRef; // For testing by now
   error = "";
@@ -30,7 +31,7 @@ export class TodoComponent implements OnInit {
           if (this.todo) {
             this.todoService.deleteTodo(this.todo)
               .subscribe(resp => {
-                  console.log('resp');
+                  this.deleteTodoEvent.emit();
                 },
                 error => {
                   this.error = 'Ups, some error occurred';

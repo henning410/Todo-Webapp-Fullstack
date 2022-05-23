@@ -21,6 +21,7 @@ export class TodoOverviewComponent implements OnInit {
   loadTodos() {
     this.dataService.getTodo()
       .subscribe((data: Todo[]) => {
+        this.todos = [];
         this.todos = data;
       },
         error => {

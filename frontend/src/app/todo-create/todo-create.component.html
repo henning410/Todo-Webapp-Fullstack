@@ -44,3 +44,9 @@
     <span>Done</span>
   </button>
 </div>
+<div style="display: flex; justify-content: center">
+  <nz-alert *ngIf="error !== ''" nzType="error" style="margin-top: 2%; text-align: center; width: 50%"
+            [nzMessage]="error"
+            nzShowIcon
+  ></nz-alert>
+</div>
