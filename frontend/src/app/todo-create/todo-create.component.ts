@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Todo} from "../models/todo";
 import {DataService} from "../service/data.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-todo-create',
@@ -14,8 +15,9 @@ export class TodoCreateComponent implements OnInit {
     todo: '',
     priority: 1,
   };
+  error = "";
 
-  constructor(private todoService: DataService) { }
+  constructor(private todoService: DataService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -30,9 +32,11 @@ export class TodoCreateComponent implements OnInit {
 
   done(): void {
     this.todoService.createTodo(this.todo).subscribe(todo => {
-      //TODO: Add new todo to current todos
-      //this.todos.push(todo);
-    });
+      this.router.navigate(['my-todos'])
+    },
+      error => {
+       this.error = error;
+      });
   }
 
   toNumber() {

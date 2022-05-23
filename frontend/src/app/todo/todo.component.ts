@@ -33,7 +33,7 @@ export class TodoComponent implements OnInit {
                   console.log('resp');
                 },
                 error => {
-                  this.error = 'Ups, some error occured';
+                  this.error = 'Ups, some error occurred';
                 });
           }
         }
@@ -50,7 +50,13 @@ export class TodoComponent implements OnInit {
   handleOk(): void {
     this.isVisible = false;
     if (this.todo) {
-      this.todoService.updateTodo(this.todo);
+      this.todoService.updateTodo(this.todo)
+        .subscribe(resp => {
+            console.log('resp');
+          },
+          error => {
+            this.error = 'Ups, some error occurred';
+          });
     }
   }
 

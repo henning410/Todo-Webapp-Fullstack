@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import {Todo} from "../models/todo";
-import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   getTodo(): Observable<Todo[]> {
     return this.http.get<Todo[]>('http://localhost:3000/todo')
@@ -24,12 +23,11 @@ export class DataService {
   createTodo(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>('http://localhost:3000/todo/', todo)
       .pipe(catchError(this.handleError));
-    this.router.navigate(['my-todos']);
   }
 
-  updateTodo(todo: Todo) {
-    //TODO: correct http call here
-    console.log('Update this todo: ', todo);
+  updateTodo(todo: Todo): Observable<Todo> {
+    return this.http.put<Todo>('http://localhost:3000/todo/', todo)
+      .pipe(catchError(this.handleError))
   }
 
   private handleError(error: HttpErrorResponse) {
