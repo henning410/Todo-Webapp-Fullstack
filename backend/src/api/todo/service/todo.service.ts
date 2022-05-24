@@ -1,21 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Todo } from '../entities/todo.entity';
+import { Todo } from '../models/todo.entity';
 import { Repository } from 'typeorm';
+import { TodoI } from '../models/todo.interface';
 
 @Injectable()
 export class TodoService {
   constructor(@InjectRepository(Todo) private repository: Repository<Todo>) {}
 
-  public getAllTodos() {
+  public getAllTodos(): Promise<TodoI[]> {
     return this.repository.find({ order: { priority: 'ASC' } });
   }
 
-  public async getTodoByName(name: string) {
+  public async getTodoByName(name: string): Promise<Todo> {
     return this.repository.findOne(name);
   }
 
-  public changeTodo(todo: any) {
+  public changeTodo(todo: TodoI) {
     return this.repository
       .createQueryBuilder()
       .update(Todo)
@@ -33,7 +34,7 @@ export class TodoService {
       .execute();
   }
 
-  public add(todo: any) {
+  public add(todo: TodoI) {
     return this.repository
       .createQueryBuilder()
       .insert()

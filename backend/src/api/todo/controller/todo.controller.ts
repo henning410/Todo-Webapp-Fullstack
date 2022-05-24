@@ -8,9 +8,10 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { TodoService } from './todo.service';
-import { Todo } from '../entities/todo.entity';
+import { TodoService } from '../service/todo.service';
+import { Todo } from '../models/todo.entity';
 import { UpdateResult } from 'typeorm';
+import { TodoI } from '../models/todo.interface';
 
 @Controller('todo')
 export class TodoController {
@@ -18,12 +19,12 @@ export class TodoController {
   private readonly service: TodoService;
 
   @Get()
-  public getAllTodos(): Promise<Todo[]> {
+  public getAllTodos(): Promise<TodoI[]> {
     return this.service.getAllTodos();
   }
 
   @Get()
-  public getTodosByName(@Param('name') name: string) {
+  public getTodoByName(@Param('name') name: string): Promise<TodoI> {
     return this.service.getTodoByName(name);
   }
 
