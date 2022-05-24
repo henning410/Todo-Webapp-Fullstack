@@ -9,7 +9,6 @@ import {
   Put,
 } from '@nestjs/common';
 import { TodoService } from '../service/todo.service';
-import { Todo } from '../models/todo.entity';
 import { UpdateResult } from 'typeorm';
 import { TodoI } from '../models/todo.interface';
 
